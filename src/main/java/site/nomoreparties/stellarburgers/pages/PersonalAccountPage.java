@@ -16,19 +16,17 @@ public class PersonalAccountPage extends BasePage {
     }
     @Step("Нажать на кнопку Выход")
     public LoginPage clickToLogout() {
-        waiForDisplay();
+        waitForDisplay();
         driver.findElement(btnEnterToLogout).click();
         return new LoginPage(driver);
     }
     @Step("Нажать на «Конструктор»")
     public ConstructorPage clickToBtnConstructor() {
-        waiForDisplay();
         driver.findElement(btnConstructor).click();
         return new ConstructorPage(driver);
     }
     @Step("Нажать на логотип Stellar Burgers")
     public ConstructorPage clickToLogo() {
-        waiForDisplay();
         driver.findElement(btnLogo).click();
         return new ConstructorPage(driver);
     }

@@ -13,11 +13,15 @@ public class UserPogo {
     private String password;
     private String name;
 
+    public String setPassword(String password) {
+        return this.password = password;
+    }
+
     public static UserPogo create(){
         return new UserPogo(
-                RandomStringUtils.randomAlphabetic(6) + "@mail.com",
-                RandomStringUtils.randomAlphabetic(6),
-                RandomStringUtils.randomAlphabetic(6)
+                RandomStringUtils.randomAlphabetic(10) + "@ya.ru",
+                RandomStringUtils.randomAlphabetic(10),
+                RandomStringUtils.randomAlphabetic(10)
         );
     }
 }

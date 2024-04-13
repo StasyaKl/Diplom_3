@@ -20,19 +20,16 @@ public class ConstructorPage extends BasePage {
 
     @Step("Нажать на кнопку «Личный кабинет» на главной странице. Пользователь не авторизован")
     public LoginPage clickPersonalAccount() {
-        waiForDisplay();
         driver.findElement(btnPersonalAccount).click();
         return new LoginPage(driver);
     }
     @Step("Нажать на кнопку «Личный кабинет» на главной странице. Пользователь авторизован")
     public PersonalAccountPage clickPersonalAccountAuthUser() {
-        waiForDisplay();
         driver.findElement(btnPersonalAccount).click();
         return new PersonalAccountPage(driver);
     }
     @Step("Нажать на кнопку «Войти в аккаунт» на главной странице")
     public LoginPage clickEnterToAccount() {
-        waiForDisplay();
         driver.findElement(btnEnterToAccount).click();
         return new LoginPage(driver);
     }
@@ -49,6 +46,7 @@ public class ConstructorPage extends BasePage {
     }
     @Step("Убедиться, что открыта главная страница и пользователь авторизован")
     public boolean btnIsVisible() {
+        waitForDisplay();
         return isPageWindowDisplayed(btnCheckout);
     }
 }

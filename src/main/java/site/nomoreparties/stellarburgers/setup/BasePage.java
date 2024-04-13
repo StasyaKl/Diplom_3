@@ -17,7 +17,7 @@ public class BasePage {
     }
 
     public boolean isPageWindowDisplayed(By element) {
-        waiForDisplay();
+        waitForDisplay();
         return driver.findElement(element).isDisplayed();
     }
 
@@ -29,8 +29,7 @@ public class BasePage {
                 .clickToLogin();
     }
 
-    public void waiForDisplay() {
-        long time = 5;
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(time));
+    public void waitForDisplay() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     }
 }

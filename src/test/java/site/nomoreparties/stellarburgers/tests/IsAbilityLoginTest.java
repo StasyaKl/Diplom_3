@@ -2,6 +2,7 @@ package site.nomoreparties.stellarburgers.tests;
 
 import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
+import org.junit.Before;
 import org.junit.Test;
 import site.nomoreparties.stellarburgers.pages.ConstructorPage;
 import site.nomoreparties.stellarburgers.setup.BaseTest;
@@ -9,6 +10,11 @@ import site.nomoreparties.stellarburgers.setup.BaseTest;
 import static org.junit.Assert.assertTrue;
 
 public class IsAbilityLoginTest extends BaseTest {
+    @Before
+    public void registerUser() {
+        registerUserWithAPI();
+    }
+
     @Test
     @DisplayName("Проверка входа по кнопке «Войти в аккаунт» на главной")
     @Description("Метод проверяет, что после нажатия на «Войти» и заполнения данными, отображается главная страница")

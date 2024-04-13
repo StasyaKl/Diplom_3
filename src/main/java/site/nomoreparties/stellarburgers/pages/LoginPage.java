@@ -32,7 +32,6 @@ public class LoginPage extends BasePage {
     }
     @Step("Нажать на кнопку Зарегистрироваться")
     public RegistrationPage clickToRegister() {
-        waiForDisplay();
         driver.findElement(btnToRegister).click();
         return new RegistrationPage(driver);
     }

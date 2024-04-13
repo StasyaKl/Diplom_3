@@ -7,12 +7,12 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
 public class UserAPI {
-    public static String POST_REGISTER_USER = "/site/nomoreparties/stellarburgers/api/auth/register";
-    public static String POST_LOGIN_USER = "/site/nomoreparties/stellarburgers/api/auth/login";
-    public static String DELETE_USER = "/site/nomoreparties/stellarburgers/api/auth/user";
+    public static String POST_REGISTER_USER = "api/auth/register";
+    public static String POST_LOGIN_USER = "api/auth/login";
+    public static String DELETE_USER = "api/auth/user";
     @Step("Отправка POST-запроса. Регистрация пользователя")
-    public static Response postUserCreateRequest(UserPogo userPogo) {
-        return given()
+    public static void postUserCreateRequest(UserPogo userPogo) {
+        given()
                 .contentType(ContentType.JSON)
                 .and()
                 .body(userPogo)
@@ -28,8 +28,8 @@ public class UserAPI {
     }
 
     @Step("Отправка DELETE-запроса. Удаление пользователя")
-    public static Response deleteUserRequest(String accessToken) {
-        return given()
+    public static void deleteUserRequest(String accessToken) {
+        given()
                 .auth().oauth2(accessToken)
                 .delete(DELETE_USER);
     }

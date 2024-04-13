@@ -9,10 +9,9 @@ import org.openqa.selenium.WebDriver;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import site.nomoreparties.stellarburgers.setup.MainPage;
 
-import static site.nomoreparties.stellarburgers.api.UserAPI.deleteUserRequest;
-import static site.nomoreparties.stellarburgers.api.UserAPI.postUserCreateRequest;
+import static site.nomoreparties.stellarburgers.api.UserAPI.*;
+import static site.nomoreparties.stellarburgers.setup.MainPage.URL;
 
 public class BaseTest {
     protected WebDriver driver;
@@ -23,13 +22,19 @@ public class BaseTest {
     public void setUp() {
         String browser = System.getenv("BROWSER");
         driver = getDriver(browser == null ? "chrome" : browser);
-        driver.get(MainPage.URL);
-
-        RestAssured.baseURI = "https://stellarburgers.nomoreparties.site/";
+        driver.get(URL);
 
         userPogo = UserPogo.create();
+        RestAssured.baseURI = URL;
+    }
 
-        Response response = postUserCreateRequest(userPogo);
+    public void registerUserWithAPI() {
+        postUserCreateRequest(userPogo);
+        getAccessToken();
+    }
+
+    public void getAccessToken() {
+        Response response = postUserLoginRequest(userPogo);
         accessToken = response.path("accessToken").toString().substring(7);
     }
 
