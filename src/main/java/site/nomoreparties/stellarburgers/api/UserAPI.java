@@ -7,9 +7,9 @@ import io.restassured.response.Response;
 import static io.restassured.RestAssured.given;
 
 public class UserAPI {
-    public static String POST_REGISTER_USER = "api/auth/register";
-    public static String POST_LOGIN_USER = "api/auth/login";
-    public static String DELETE_USER = "api/auth/user";
+    public static final String POST_REGISTER_USER = "api/auth/register";
+    public static final String POST_LOGIN_USER = "api/auth/login";
+    public static final String DELETE_USER = "api/auth/user";
     @Step("Отправка POST-запроса. Регистрация пользователя")
     public static void postUserCreateRequest(UserPogo userPogo) {
         given()
