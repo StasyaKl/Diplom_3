@@ -30,7 +30,6 @@ public class BaseTest {
 
     public void registerUserWithAPI() {
         postUserCreateRequest(userPogo);
-        getAccessToken();
     }
 
     public void getAccessToken() {
@@ -53,7 +52,19 @@ public class BaseTest {
 
     @After
     public void teardown() {
-        driver.quit();
-        deleteUserRequest(accessToken);
+        try {
+            getAccessToken();
+            deleteUserRequest(accessToken);
+        } catch (IllegalArgumentException | NullPointerException exception) {
+            System.err.println("An error occurred during teardown: " + exception.getMessage());
+        } finally {
+            try {
+                if (driver != null) {
+                    driver.quit();
+                }
+            } catch (Exception e) {
+                System.err.println("An error occurred while quitting the driver: " + e.getMessage());
+            }
+        }
     }
 }

@@ -23,6 +23,5 @@ public class PositiveRegisterTest extends BaseTest {
                 .clickToRegister();
 
         assertTrue(new LoginPage(driver).isLoginWindowDisplayed());
-        getAccessToken();
     }
 }
